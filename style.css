@@ -1,0 +1,29 @@
+body {
+    margin: 0;
+    height: 100vh;
+    background: linear-gradient(135deg, #001f3f, #00ffcc, #0066ff, #00ff99);
+    background-size: 400% 400%;
+    animation: gradientmove 10s ease infinite;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: arial, sans-serif;
+    color: white;
+}
+
+@keyframes gradientmove {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+.game-title {
+    font-size: 50px;
+    text-shadow: 0 0 5px #00f5ff, 0 0 10px #00f5ff, 0 0 20px #00ff9d;
+}
