@@ -1,12 +1,13 @@
+* {
+    box-sizing: border-box;
+}
+
 body {
     margin: 0;
     height: 100vh;
     background: linear-gradient(135deg, #001f3f, #00ffcc, #0066ff, #00ff99);
     background-size: 400% 400%;
     animation: gradientmove 10s ease infinite;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     font-family: arial, sans-serif;
     color: white;
 }
@@ -23,7 +24,35 @@ body {
     }
 }
 
-.game-title {
-    font-size: 50px;
-    text-shadow: 0 0 5px #00f5ff, 0 0 10px #00f5ff, 0 0 20px #00ff9d;
+.container {
+    margin: 20px auto;
+    width: 90%;
 }
+
+.row {
+    display:flex;
+}
+
+hr {
+    border: 1px solid #eee;
+}
+
+.game-info {
+    display: flex;
+}
+
+.game-info .game-name {
+    flex: 1;
+}
+
+.game-info .category {
+    flex:1;
+    text-align: right;
+}
+
+.game-info .category span {
+    text-transform: capitalize;
+    color: #e91e63;
+    font-weight: bold;
+}
+
