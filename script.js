@@ -25,11 +25,37 @@ countries: ["egypt","america","japan","china","canada","brazil","france","german
 ]
 }
 
-// get random word for starting the game
+// random word for starting the game
 let allkeys = Object.keys(words);
-let randomnum = math.floor(math.random() * allkeys.length);
+let randomnum = Math.floor(Math.random() * allkeys.length);
 let randomname = allkeys[randomnum];
 let randomvalue = words[randomname];
-let randomvaluenum = math.floor(math.random() * randomvalue.length);
+let randomvaluenum = Math.floor(Math.random() * randomvalue.length);
 let randomvaluevalue = randomvalue[randomvaluenum];
+console.log("Word:", randomvaluevalue);
+console.log("Length:", randomvaluevalue.length);
 document.querySelector(".game-info .category span").innerHTML = randomname;
+
+
+let lettersguesscont = document.querySelector(".letters-guess");
+let lettersandspace = Array.from(randomvaluevalue);
+lettersandspace.forEach(letter => {
+    let emptyspan = document.createElement   ("span");
+    if (letter === ' ') {
+        emptyspan.className = "with-space";
+    }
+    lettersguesscont.appendChild(emptyspan);
+})
+
+document.addEventListener("click", (e) => {
+    if (e.target.className === 'box') {
+        e.target.classList.add("clicked");
+        let clickedletter = e.target.innerHTML.toLowerCase();
+        let chosenword = Array.from(randomvaluevalue);
+        chosenword.forEach((wordletter, index) => {
+            if (clickedletter === wordletter) {
+                console.log(`found at index ${index}`);
+            }
+        });
+    }
+});
