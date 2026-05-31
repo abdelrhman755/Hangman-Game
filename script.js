@@ -104,6 +104,14 @@ function endgame() {
    div.className = "popup lose";
    // append the div to the body
    document.body.appendChild(div);
+   // play again button
+   let playagainbtn = document.createElement("button");
+   playagainbtn.innerHTML = "play again";
+   playagainbtn.className = "play-again";
+   playagainbtn.addEventListener("click", () => {
+    location.reload();
+   });
+   div.appendChild(playagainbtn);
 }
 // win game function
 function wingame() {
@@ -117,4 +125,12 @@ function wingame() {
     div.className = "popup win";
     // append the div to the body
     document.body.appendChild(div);
+    // play again button
+    let playagainbtn = document.createElement("button");
+    playagainbtn.innerHTML = "play again";
+    playagainbtn.className = "play-again";
+    playagainbtn.addEventListener("click", () => {
+        location.reload();
+    });
+    div.appendChild(playagainbtn);
 }
