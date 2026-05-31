@@ -69,7 +69,24 @@ hr {
     border-bottom: 4px solid #222;
     position: relative;
     margin: auto; 
-} 
+    left: -60px;
+    display: none;
+}
+
+.hangman-draw .stand {
+    width: 4px;
+    height: 100%;
+    background-color: #222;
+    position: absolute;
+    left: 50%;
+    margin-left: -2px;
+    display: none;
+
+}
+
+.hangman-draw .hang {
+    display: none;
+}
 
 .hangman-draw .stand:before {
     content: '';
@@ -109,6 +126,7 @@ hr {
     left: 95px;
     position: absolute;
     border: 4px dashed #222;
+    display: none;
 }
 
 .hangman-draw .man .head {
@@ -119,6 +137,7 @@ hr {
     position:absolute;
     left: 105px;
     top: 55px;
+    display: none;
 }
 
 .hangman-draw .man .body {
@@ -128,6 +147,11 @@ hr {
     height: 110px;
     top:102px;
     left:130px;
+    display: none;
+}
+
+.hangman-draw .man .hands {
+    display: none;
 }
 
 .hangman-draw .man .hands:before {
@@ -149,6 +173,9 @@ hr {
 
 }
 
+.hangman-draw .man .legs {
+    display: none;
+}
 
 .hangman-draw .man .legs:before {
     left:85px;
@@ -168,10 +195,46 @@ hr {
     top:220px;
 }
 
+.hangman-draw.wrong-1 .the-draw {
+    display: block;
+}
+
+.hangman-draw.wrong-2 .stand {
+    display: block;
+}
+
+.hangman-draw.wrong-3 .hang {
+    display: block;
+}
+
+.hangman-draw.wrong-4 .rope {
+    display: block;
+}
+
+.hangman-draw.wrong-5 .head {
+    display: block;
+}
+
+.hangman-draw.wrong-6 .body {
+    display: block;
+}
+
+.hangman-draw.wrong-7 .hands {
+    display: block;
+}
+
+.hangman-draw.wrong-8 .legs {
+    display: block;
+}
+
 .letters {
     flex:1;
     padding: 15px;
     text-align:center;
+}
+
+.letters.finished {
+    pointer-events: none;
 }
 
 .letters .box {
@@ -237,3 +300,48 @@ hr {
     transform: translate(-50%, -50%);
 }
 
+
+.popup {
+    position: fixed;
+    padding: 30px 50px;
+    width: 500px;
+    max-width: 90%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align:center;
+    font-size:24px;
+    font-weight: bold;
+    color: #ffffff;
+    border-radius: 16px;
+    font-family: 'Arial', sans-serif;
+    z-index: 1000;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+    animation: popupfade 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+.popup.win {
+    background: linear-gradient(135deg, #11998e, #38ef7d);
+    border: 2px solid #5af78e;
+}
+
+.popup.lose {
+    background: linear-gradient(135deg, #ff416c, #ff4b2b);
+    border: 2px solid #ff6b6b;
+}
+
+@keyframes popupfade {
+    0% {
+        transform: translate(-50%, -30%);
+        opacity: 0;
+    }
+    100% {
+        transform: translate(-50%, -50%);
+        opacity: 1;
+    }
+}
+
+.lettersContainer {
+    opacity: 1;
+    transition: opacity 0.4s ease;
+}

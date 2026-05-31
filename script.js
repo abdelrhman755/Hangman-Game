@@ -15,10 +15,10 @@ const words = {
     programming: [ "javascript","python", "react", "html", "css", "github", "coding","frontend","backend","nodejs"
 ],
 
-movies: ["ironman","avengers","endgame","infinitywar","thor","spiderman", "blackpanther","doctorstrange","captainamerica","guardians"
+MarvelMovies: ["ironman","avengers","endgame","infinitywar","thor","spiderman", "blackpanther","doctorstrange","captainamerica","guardians"
 ],
 
-people: [ "tonystark","ironman","peterparker","spiderman","thor","loki","thanos","hulk","wanda","doctorstrange"
+MarvelCharacters: [ "tonystark","ironman","peterparker","spiderman","thor","loki","thanos","hulk","wanda","doctorstrange"
 ],
 
 countries: ["egypt","america","japan","china","canada","brazil","france","germany","italy","australia"
@@ -48,9 +48,10 @@ lettersandspace.forEach(letter => {
 })
 
 let guessspans = document.querySelectorAll(".letters-guess span");
-let status = false;
-
+let wrongattempts = 0;
+let thedraw = document.querySelector(".hangman-draw");
 document.addEventListener("click", (e) => {
+    let status = false;
     if (e.target.className === 'box') {
         e.target.classList.add("clicked");
         let clickedletter = e.target.innerHTML.toLowerCase();
@@ -63,7 +64,57 @@ document.addEventListener("click", (e) => {
                         span.innerHTML = wordletter;
                     }
                 });
+
             }
         });
+        if (status !== true) {
+            wrongattempts++;
+            thedraw.classList.add(`wrong-${wrongattempts}`);
+            document.getElementById("fail").play();
+            if (wrongattempts === 8) {
+                // Game over logic
+                endgame();
+                lettersContainer.classList.add("finished");
+            }
+        } else {
+            document.getElementById("success").play();
+            let allSpansFilled = true;
+            guessspans.forEach(span => {
+                if (span.innerHTML === "" && !span.classList.contains("with-space")) {
+                    allSpansFilled = false; 
+                }
+            });
+            if (allSpansFilled) {
+                wingame(); 
+                lettersContainer.classList.add("finished"); 
+            }
+        }
     }
 });
+
+// end game function
+function endgame() {
+    // popup div
+    let div = document.createElement("div");
+    //text
+    let divtext = document.createTextNode(`Game Over, The word is ${randomvaluevalue}`);
+   //appent text to the div
+   div.appendChild(divtext);
+   // add class to the div
+   div.className = "popup lose";
+   // append the div to the body
+   document.body.appendChild(div);
+}
+// win game function
+function wingame() {
+    // popup div
+    let div = document.createElement("div");
+    // text
+    let divtext = document.createTextNode(`Congratulations, You Win! You made ${wrongattempts} mistake(s).`);
+    // append text to the div
+    div.appendChild(divtext);
+    // add class to the div
+    div.className = "popup win";
+    // append the div to the body
+    document.body.appendChild(div);
+}
