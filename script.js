@@ -47,14 +47,22 @@ lettersandspace.forEach(letter => {
     lettersguesscont.appendChild(emptyspan);
 })
 
+let guessspans = document.querySelectorAll(".letters-guess span");
+let status = false;
+
 document.addEventListener("click", (e) => {
     if (e.target.className === 'box') {
         e.target.classList.add("clicked");
         let clickedletter = e.target.innerHTML.toLowerCase();
         let chosenword = Array.from(randomvaluevalue);
-        chosenword.forEach((wordletter, index) => {
+        chosenword.forEach((wordletter, wordindex) => {
             if (clickedletter === wordletter) {
-                console.log(`found at index ${index}`);
+                status = true;
+                guessspans.forEach((span, spanindex) => {
+                    if (wordindex === spanindex) {
+                        span.innerHTML = wordletter;
+                    }
+                });
             }
         });
     }

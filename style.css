@@ -217,6 +217,8 @@ hr {
     border-bottom: 3px solid #222;
     transition: 3s;
     display: inline-block;
+    color: #00ff99;
+    text-shadow: 0 0 10px #00ff99;
 }
 
 .letters-guess span.with-space {
