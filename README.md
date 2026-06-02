@@ -8,3 +8,7 @@ it have many words related to marvel characters, countries, programming and othe
 the code is open source and anyone can try it 
 
 made by me (Abdelrahman Mohamed Abdelrazek(stark))
+
+AI: I used Ai for knowing how to make a gridiant background only after i learned how i made it by my self 
+all the project was made by me after watching a totoril 
+it takes a week from me (watching the totorial after it it made by my self)
